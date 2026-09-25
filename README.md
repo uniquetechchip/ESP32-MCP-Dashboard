@@ -1,7 +1,7 @@
-![Real-time ESP32 MCP Dashboard showing live sensor data like temperature, humidity, and gas levels.](images/IMG_4631.JPG)
-
 ESP32 MCP DASHBOARD: COMPLETE SYSTEM DOCUMENTATION
 Developer: Munna Kumar
+
+![Real-time ESP32 MCP Dashboard showing live sensor data like temperature, humidity, and gas levels.](images/IMG_4631.JPG)
 
 1. FIRST-TIME SETUP & WI-FI CONFIGURATION
 ------------------------------------------------------------

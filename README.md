@@ -39,8 +39,11 @@ Developer: Munna Kumar
 * RGB LED (Robot Command): If the connected AI or robot sends a JSON command (e.g., {"color":"RED"}), the ESP32 intercepts it and instantly changes the RGB LED color. This serves as a physical indicator that the external AI has received the data and executed an action.
 * Flashing Blink LED: A standard LED on the board toggles on and off every 500 milliseconds. This acts as a system "heartbeat," visually confirming that the FreeRTOS main loop is running smoothly and hasn't crashed or frozen.
 
-![ESP32 Dashboard Offline OTA Firmware Upgrading process via SD Card.](images/IMG_4631.JPG)
+![Real-time ESP32 MCP Dashboard showing live sensor data like temperature, humidity, and gas levels.](images/IMG_4631.JPG)
 
 ![ESP32 Dashboard MQ Gas Sensors Calibrating process.](images/IMG_4632.JPG)
 
-![Real-time ESP32 MCP Dashboard showing live sensor data like temperature, humidity, and gas levels.](images/IMG_4635.jpg)
+![ESP32 Dashboard Offline OTA Firmware Upgrading process via SD Card.](images/IMG_4635.jpg)
+
+
+

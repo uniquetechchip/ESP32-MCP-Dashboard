@@ -1,0 +1,14 @@
+=========================================
+ESP32 Firmware Flashing Guide (Online)
+Follow these steps to flash this binary (.bin) file to your ESP32. You do not need to install any software, as this can be done directly through your web browser (Chrome or Edge).
+Steps for Flashing:
+1. Connect your ESP32 board to your computer or laptop using a USB cable.
+2. Open Google Chrome or Microsoft Edge browser and go to this website:
+https://espressif.github.io/esptool-js/
+3. Set the Baudrate to ⁠115200⁠.
+4. Click on the "Connect" button. A pop-up window will appear; select your ESP32's USB port (COM Port) and click Connect.
+5. Once successfully connected, scroll down slightly.
+6. In the "Flash Address" box, type ⁠0x0⁠.
+7. Click the "Choose File" button and select the ⁠.bin⁠ file you downloaded.
+8. Finally, click the "Program" button.
+The flashing process will begin. After it reaches 100%, press the 'EN' (Enable) or 'RST' (Reset) button on your ESP32 board to restart the device.

@@ -11,6 +11,8 @@ Developer: Munna Kumar
 
 2. MULTI-FUNCTION BUTTON OPERATIONS
 ------------------------------------------------------------
+![ESP32 Dashboard MQ Gas Sensors Calibrating process.](images/IMG_4632.JPG)
+
 * Single Tap: Instantly logs the current environmental data (temperature, humidity, and all gas sensor readings) to the Micro SD card. You can later insert this SD card into a PC to view the timestamped .txt log files.
 * Double Tap: Toggles the TFT display between standard Color mode and a high-contrast Black & White (B&W) mode. Double-tap again to revert.
 * 3-Second Press (While Device is On): Triggers the non-blocking "Calibration" process for all MQ gas sensors. This averages the current clean-air readings to set a new baseline for accurate future measurements.
@@ -44,7 +46,6 @@ Developer: Munna Kumar
 
 ![Real-time ESP32 MCP Dashboard showing live sensor data like temperature, humidity, and gas levels.](images/IMG_4631.JPG)
 
-![ESP32 Dashboard MQ Gas Sensors Calibrating process.](images/IMG_4632.JPG)
 
 
 

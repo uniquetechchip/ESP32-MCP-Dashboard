@@ -25,6 +25,9 @@ Developer: Munna Kumar
 
 4. FIRMWARE FLASHING VIA MICRO SD CARD (OFFLINE OTA)
 ------------------------------------------------------------
+
+![ESP32 Dashboard Offline OTA Firmware Upgrading process via SD Card.](images/IMG_4635.jpg)
+
 * How it Works: The system supports offline firmware updates directly from the Micro SD card without needing to connect the ESP32 to a computer.
 * The Process: 
   1. Compile your updated Arduino code and export the compiled Binary (.bin) file.
@@ -42,8 +45,6 @@ Developer: Munna Kumar
 ![Real-time ESP32 MCP Dashboard showing live sensor data like temperature, humidity, and gas levels.](images/IMG_4631.JPG)
 
 ![ESP32 Dashboard MQ Gas Sensors Calibrating process.](images/IMG_4632.JPG)
-
-![ESP32 Dashboard Offline OTA Firmware Upgrading process via SD Card.](images/IMG_4635.jpg)
 
 
 

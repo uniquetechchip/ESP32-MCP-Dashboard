@@ -1,7 +1,7 @@
-============================================================
+![Real-time ESP32 MCP Dashboard showing live sensor data like temperature, humidity, and gas levels.](images/IMG_4631.JPG)
+
 ESP32 MCP DASHBOARD: COMPLETE SYSTEM DOCUMENTATION
 Developer: Munna Kumar
-============================================================
 
 1. FIRST-TIME SETUP & WI-FI CONFIGURATION
 ------------------------------------------------------------
@@ -44,7 +44,7 @@ Developer: Munna Kumar
 * RGB LED (Robot Command): If the connected AI or robot sends a JSON command (e.g., {"color":"RED"}), the ESP32 intercepts it and instantly changes the RGB LED color. This serves as a physical indicator that the external AI has received the data and executed an action.
 * Flashing Blink LED: A standard LED on the board toggles on and off every 500 milliseconds. This acts as a system "heartbeat," visually confirming that the FreeRTOS main loop is running smoothly and hasn't crashed or frozen.
 
-![Real-time ESP32 MCP Dashboard showing live sensor data like temperature, humidity, and gas levels.](images/IMG_4631.JPG)
+
 
 
 

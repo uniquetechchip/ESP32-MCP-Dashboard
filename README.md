@@ -55,103 +55,123 @@ Requirement Library
 6. Adafruit Unified Sensor
 
 
-===================================
-  ESP32 DEVKIT V1 PIN CONNECTION
-===================================
+ESP32 DEVKIT V1 Pin Connections
 
-[ ESP32 DEVKIT V1 (30-PIN) LAYOUT ]
-(USB port at the bottom, Antenna at the top)
+1.8” TFT Display — ST7735
 
-       [ ANTENNA ]
-     EN [       ] D23  (MOSI - TFT & SD)
-  VP/36 [       ] D22
-  VN/39 [       ] TX0
-    D34 [       ] RX0
-    D35 [       ] D21
-    D32 [       ] D19  (MISO - SD)
-    D33 [       ] D18  (SCK - TFT & SD)
-    D25 [       ] D5   (TFT CS)
-    D26 [       ] TX2 / D17
-    D27 [       ] RX2 / D16
-    D14 [       ] D4   (RGB Red)
-    D12 [       ] D2   (Blink LED)
-    D13 [       ] D15  (Button)
-    GND [       ] GND  (Common Ground for All)
-    VIN [  USB  ] 3V3  (TFT VCC/BL & DHT22 VCC)
-     ^ 
- (SD Card VCC & MQ Sensor VCC)
+TFT Pin	ESP32 GPIO	Description
+VCC	3V3	3.3V Power
+GND	GND	Common Ground
+CS	GPIO 5	TFT Chip Select
+RST	GPIO 14	TFT Reset
+D/C	GPIO 12	Data/Command
+DIN (MOSI)	GPIO 23	SPI MOSI — Shared with Micro SD
+CLK (SCK)	GPIO 18	SPI Clock — Shared with Micro SD
+BL	3V3	Backlight
 
-===================================
-          WIRING GUIDE
-===================================
+Micro SD Card Module
 
-[ 1.8" TFT DISPLAY ]
-VCC          -> 3V3  *(ESP32 3.3V Pin)*
-GND          -> GND  *(Common Ground Rail)*
-CS           -> D5
-RST          -> D14
-D/C          -> D12
-DIN (MOSI)   -> D23  *(Shared with SD)*
-CLK (SCK)    -> D18  *(Shared with SD)*
-BL           -> 3V3  *(ESP32 3.3V Pin)*
+SD Pin	ESP32 GPIO	Description
+VCC	VIN / 5V	5V Power*
+GND	GND	Common Ground
+MOSI	GPIO 23	SPI MOSI — Shared with TFT
+SCK	GPIO 18	SPI Clock — Shared with TFT
+MISO	GPIO 19	SPI MISO
+CS	GPIO 13	SD Chip Select
 
-[ MICRO SD CARD MODULE ]
-VCC          -> VIN  *(ESP32 5V Pin - Module has internal regulator)*
-GND          -> GND  *(Common Ground Rail)*
-MOSI         -> D23  *(Shared with TFT)*
-SCK          -> D18  *(Shared with TFT)*
-MISO         -> D19
-CS           -> D13
+* Use 5V only if your SD module has a suitable onboard regulator and level shifting. Verify the specifications of your specific module before connecting it.
 
-[ CALIBRATION BUTTON ]
-Terminal 1   -> D15
-Terminal 2   -> GND  *(Common Ground Rail)*
+Calibration Button
 
-[ DHT22 SENSOR ]
-VCC          -> 3V3  *(ESP32 3.3V Pin)*
-DATA         -> D27
-GND          -> GND  *(Common Ground Rail)*
+Button Pin	ESP32 GPIO
+Terminal 1	GPIO 15
+Terminal 2	GND
 
-[ MQ GAS SENSORS ] 
-MQ-135 (Air) A0 -> D34
-MQ-6 (LPG) A0   -> D35
-MQ-3 (Alc) A0   -> D32
-MQ-9 (CO) A0    -> D33
-MQ-8 (H2) A0    -> VN  *(GPIO 39)*
-All MQ VCC      -> VIN *(5V 2A external power supply recommended)*
-All MQ GND      -> GND *(Common Ground Rail)*
+The button uses the ESP32 internal pull-up configuration.
 
-[ RGB LED ] 
-R (Red)      -> D4   (Use 220Ω resistor)
-G (Green)    -> D25  (Use 220Ω resistor)
-B (Blue)     -> D26  (Use 220Ω resistor)
-Common       -> GND  *(Common Ground Rail)*
+DHT22 Temperature & Humidity Sensor
 
-[ BLINK LIGHT LED ]
-Anode (+)    -> D2   (Use 220Ω resistor)
-Cathode (-)  -> GND  *(Common Ground Rail)*
+DHT22 Pin	ESP32 GPIO	Description
+VCC	3V3	3.3V Power
+DATA	GPIO 27	Data Signal
+GND	GND	Common Ground
 
-===================================
+MQ Gas Sensors
 
-[MQ Sensor A0 Pin Voltage Divider] (Outputs up to 5V)
-         |
-         |
-        .-.
-        | |
-        | |  10kΩ Resistor
-        '-'
-         |
-         |
-         +------------------------> [ESP32 Data Pin] (Receives max 3.3V)
-         |                          (e.g., D34)
-         |
-        .-.
-        | |
-        | |  20kΩ Resistor
-        '-'
-         |
-         |
-       [GND] (Common Ground for ESP32 and Sensor)
+Sensor	Measurement	Analog Output (A0)
+MQ-135	Air Quality	GPIO 34
+MQ-6	LPG / Gas	GPIO 35
+MQ-3	Alcohol	GPIO 32
+MQ-9	Carbon Monoxide (CO)	GPIO 33
+MQ-8	Hydrogen (H₂)	GPIO 39 (VN)
 
+MQ Sensor Power
 
+* VCC → VIN / 5V
+* GND → Common GND
+* A0 → ESP32 ADC input through a suitable voltage divider
 
+A stable external 5V power supply is recommended for the MQ sensors because their heaters can consume significant current.
+
+RGB LED
+
+RGB Pin	ESP32 GPIO	Component
+R (Red)	GPIO 4	220Ω resistor
+G (Green)	GPIO 25	220Ω resistor
+B (Blue)	GPIO 26	220Ω resistor
+Common	GND	Common Ground
+
+Status / Blink LED
+
+LED Pin	ESP32 GPIO	Component
+Anode (+)	GPIO 2	220Ω resistor
+Cathode (-)	GND	Common Ground
+
+⸻
+
+MQ Sensor Analog Voltage Divider
+
+MQ sensor modules can potentially provide an analog output higher than the ESP32 ADC input range. Do not connect a 5V analog signal directly to an ESP32 GPIO.
+
+MQ Sensor A0
+     |
+     |
+    10kΩ
+     |
+     +-------------> ESP32 ADC GPIO
+     |
+    20kΩ
+     |
+    GND
+
+With a 10kΩ / 20kΩ voltage divider:
+
+Vout = Vin × 20kΩ / (10kΩ + 20kΩ)
+
+For a 5V input:
+
+Vout ≈ 3.33V
+
+Since this is slightly above 3.3V, using a divider with additional voltage margin is recommended when the sensor output can reach 5V.
+
+Important: Always verify the maximum A0 output voltage of your specific MQ sensor module before connecting it to the ESP32 ADC.
+
+⸻
+
+SPI Bus Sharing
+
+The TFT display and Micro SD card share the same SPI bus:
+
+* MOSI → GPIO 23
+* MISO → GPIO 19
+* SCK → GPIO 18
+* TFT CS → GPIO 5
+* SD CS → GPIO 13
+
+Each SPI device uses its own CS (Chip Select) pin.
+
+Common Ground
+
+All modules must share a common ground:
+
+ESP32 GND → TFT GND → SD GND → DHT22 GND → MQ Sensor GND → RGB GND → LED GND

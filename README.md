@@ -45,7 +45,7 @@ Developer: Munna Kumar
 * Flashing Blink LED: A standard LED on the board toggles on and off every 500 milliseconds. This acts as a system "heartbeat," visually confirming that the FreeRTOS main loop is running smoothly and hasn't crashed or frozen.
 
 
-Requirement Library
+[Requirement Library]
 
 1. WebSocketMCP 
 2. DHT sensor library 
@@ -57,7 +57,7 @@ Requirement Library
 
 ESP32 DEVKIT V1 Pin Connections
 
-1.8” TFT Display — ST7735
+[1.8” TFT Display — ST7735]
 
 TFT Pin	ESP32 GPIO	Description
 VCC	3V3	3.3V Power
@@ -69,7 +69,7 @@ DIN (MOSI)	GPIO 23	SPI MOSI — Shared with Micro SD
 CLK (SCK)	GPIO 18	SPI Clock — Shared with Micro SD
 BL	3V3	Backlight
 
-Micro SD Card Module
+[Micro SD Card Module]
 
 SD Pin	ESP32 GPIO	Description
 VCC	VIN / 5V	5V Power*
@@ -81,10 +81,12 @@ CS	GPIO 13	SD Chip Select
 
 * Use 5V only if your SD module has a suitable onboard regulator and level shifting. Verify the specifications of your specific module before connecting it.
 
-Calibration Button
+[Calibration Button]
 
 Button Pin	ESP32 GPIO
+
 Terminal 1	GPIO 15
+
 Terminal 2	GND
 
 The button uses the ESP32 internal pull-up configuration.
@@ -92,20 +94,28 @@ The button uses the ESP32 internal pull-up configuration.
 DHT22 Temperature & Humidity Sensor
 
 DHT22 Pin	ESP32 GPIO	Description
+
 VCC	3V3	3.3V Power
+
 DATA	GPIO 27	Data Signal
+
 GND	GND	Common Ground
 
-MQ Gas Sensors
+[MQ Gas Sensors]
 
 Sensor	Measurement	Analog Output (A0)
+
 MQ-135	Air Quality	GPIO 34
+
 MQ-6	LPG / Gas	GPIO 35
+
 MQ-3	Alcohol	GPIO 32
+
 MQ-9	Carbon Monoxide (CO)	GPIO 33
+
 MQ-8	Hydrogen (H₂)	GPIO 39 (VN)
 
-MQ Sensor Power
+[MQ Sensor Power]
 
 * VCC → VIN / 5V
 * GND → Common GND
@@ -113,23 +123,29 @@ MQ Sensor Power
 
 A stable external 5V power supply is recommended for the MQ sensors because their heaters can consume significant current.
 
-RGB LED
+[RGB LED]
 
 RGB Pin	ESP32 GPIO	Component
+
 R (Red)	GPIO 4	220Ω resistor
+
 G (Green)	GPIO 25	220Ω resistor
+
 B (Blue)	GPIO 26	220Ω resistor
+
 Common	GND	Common Ground
 
-Status / Blink LED
+[Status / Blink LED]
 
 LED Pin	ESP32 GPIO	Component
+
 Anode (+)	GPIO 2	220Ω resistor
+
 Cathode (-)	GND	Common Ground
 
 ⸻
 
-MQ Sensor Analog Voltage Divider
+[MQ Sensor Analog Voltage Divider]
 
 MQ sensor modules can potentially provide an analog output higher than the ESP32 ADC input range. Do not connect a 5V analog signal directly to an ESP32 GPIO.
 
@@ -158,7 +174,7 @@ Important: Always verify the maximum A0 output voltage of your specific MQ senso
 
 ⸻
 
-SPI Bus Sharing
+[SPI Bus Sharing]
 
 The TFT display and Micro SD card share the same SPI bus:
 

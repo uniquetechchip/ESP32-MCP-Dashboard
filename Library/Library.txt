@@ -1,0 +1,9 @@
+ Requirement Library
+
+
+WebSocketMCP
+DHT sensor library
+Adafruit GFX Library
+Adafruit ST7735 and ST7789 Library
+SPI
+ArduinoJson

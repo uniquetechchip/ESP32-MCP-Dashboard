@@ -55,31 +55,49 @@ Developer: Munna Kumar
 6. Adafruit Unified Sensor
 
 
+
 ESP32 DEVKIT V1 Pin Connections
 
 [1.8” TFT Display — ST7735]
-
 TFT Pin	ESP32 GPIO	Description
+
 VCC	3V3	3.3V Power
+
 GND	GND	Common Ground
+
 CS	GPIO 5	TFT Chip Select
+
 RST	GPIO 14	TFT Reset
+
 D/C	GPIO 12	Data/Command
+
 DIN (MOSI)	GPIO 23	SPI MOSI — Shared with Micro SD
+
 CLK (SCK)	GPIO 18	SPI Clock — Shared with Micro SD
+
 BL	3V3	Backlight
+
+
 
 [Micro SD Card Module]
 
 SD Pin	ESP32 GPIO	Description
+
 VCC	VIN / 5V	5V Power*
+
 GND	GND	Common Ground
+
 MOSI	GPIO 23	SPI MOSI — Shared with TFT
+
 SCK	GPIO 18	SPI Clock — Shared with TFT
+
 MISO	GPIO 19	SPI MISO
+
 CS	GPIO 13	SD Chip Select
 
 * Use 5V only if your SD module has a suitable onboard regulator and level shifting. Verify the specifications of your specific module before connecting it.
+
+
 
 [Calibration Button]
 
@@ -91,7 +109,9 @@ Terminal 2	GND
 
 The button uses the ESP32 internal pull-up configuration.
 
-DHT22 Temperature & Humidity Sensor
+
+
+[DHT22 Temperature & Humidity Sensor]
 
 DHT22 Pin	ESP32 GPIO	Description
 
@@ -100,6 +120,8 @@ VCC	3V3	3.3V Power
 DATA	GPIO 27	Data Signal
 
 GND	GND	Common Ground
+
+
 
 [MQ Gas Sensors]
 
@@ -123,6 +145,8 @@ MQ-8	Hydrogen (H₂)	GPIO 39 (VN)
 
 A stable external 5V power supply is recommended for the MQ sensors because their heaters can consume significant current.
 
+
+
 [RGB LED]
 
 RGB Pin	ESP32 GPIO	Component
@@ -135,6 +159,8 @@ B (Blue)	GPIO 26	220Ω resistor
 
 Common	GND	Common Ground
 
+
+
 [Status / Blink LED]
 
 LED Pin	ESP32 GPIO	Component
@@ -144,6 +170,8 @@ Anode (+)	GPIO 2	220Ω resistor
 Cathode (-)	GND	Common Ground
 
 ⸻
+
+
 
 [MQ Sensor Analog Voltage Divider]
 

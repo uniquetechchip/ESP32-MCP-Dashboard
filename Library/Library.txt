@@ -1,0 +1,9 @@
+ Requirement Library
+
+
+1. WebSocketMCP 
+2. DHT sensor library 
+3. Adafruit GFX Library 
+4. Adafruit ST7735 and ST7789 Library 
+5. ArduinoJson 
+6. Adafruit Unified Sensor

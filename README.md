@@ -45,6 +45,14 @@ Developer: Munna Kumar
 * Flashing Blink LED: A standard LED on the board toggles on and off every 500 milliseconds. This acts as a system "heartbeat," visually confirming that the FreeRTOS main loop is running smoothly and hasn't crashed or frozen.
 
 
+Requirement Library
+
+1. WebSocketMCP 
+2. DHT sensor library 
+3. Adafruit GFX Library 
+4. Adafruit ST7735 and ST7789 Library 
+5. ArduinoJson 
+6. Adafruit Unified Sensor
 
 
 

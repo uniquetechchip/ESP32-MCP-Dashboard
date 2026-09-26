@@ -55,5 +55,103 @@ Requirement Library
 6. Adafruit Unified Sensor
 
 
+===================================
+  ESP32 DEVKIT V1 PIN CONNECTION
+===================================
+
+[ ESP32 DEVKIT V1 (30-PIN) LAYOUT ]
+(USB port at the bottom, Antenna at the top)
+
+       [ ANTENNA ]
+     EN [       ] D23  (MOSI - TFT & SD)
+  VP/36 [       ] D22
+  VN/39 [       ] TX0
+    D34 [       ] RX0
+    D35 [       ] D21
+    D32 [       ] D19  (MISO - SD)
+    D33 [       ] D18  (SCK - TFT & SD)
+    D25 [       ] D5   (TFT CS)
+    D26 [       ] TX2 / D17
+    D27 [       ] RX2 / D16
+    D14 [       ] D4   (RGB Red)
+    D12 [       ] D2   (Blink LED)
+    D13 [       ] D15  (Button)
+    GND [       ] GND  (Common Ground for All)
+    VIN [  USB  ] 3V3  (TFT VCC/BL & DHT22 VCC)
+     ^ 
+ (SD Card VCC & MQ Sensor VCC)
+
+===================================
+          WIRING GUIDE
+===================================
+
+[ 1.8" TFT DISPLAY ]
+VCC          -> 3V3  *(ESP32 3.3V Pin)*
+GND          -> GND  *(Common Ground Rail)*
+CS           -> D5
+RST          -> D14
+D/C          -> D12
+DIN (MOSI)   -> D23  *(Shared with SD)*
+CLK (SCK)    -> D18  *(Shared with SD)*
+BL           -> 3V3  *(ESP32 3.3V Pin)*
+
+[ MICRO SD CARD MODULE ]
+VCC          -> VIN  *(ESP32 5V Pin - Module has internal regulator)*
+GND          -> GND  *(Common Ground Rail)*
+MOSI         -> D23  *(Shared with TFT)*
+SCK          -> D18  *(Shared with TFT)*
+MISO         -> D19
+CS           -> D13
+
+[ CALIBRATION BUTTON ]
+Terminal 1   -> D15
+Terminal 2   -> GND  *(Common Ground Rail)*
+
+[ DHT22 SENSOR ]
+VCC          -> 3V3  *(ESP32 3.3V Pin)*
+DATA         -> D27
+GND          -> GND  *(Common Ground Rail)*
+
+[ MQ GAS SENSORS ] 
+MQ-135 (Air) A0 -> D34
+MQ-6 (LPG) A0   -> D35
+MQ-3 (Alc) A0   -> D32
+MQ-9 (CO) A0    -> D33
+MQ-8 (H2) A0    -> VN  *(GPIO 39)*
+All MQ VCC      -> VIN *(5V 2A external power supply recommended)*
+All MQ GND      -> GND *(Common Ground Rail)*
+
+[ RGB LED ] 
+R (Red)      -> D4   (Use 220Ω resistor)
+G (Green)    -> D25  (Use 220Ω resistor)
+B (Blue)     -> D26  (Use 220Ω resistor)
+Common       -> GND  *(Common Ground Rail)*
+
+[ BLINK LIGHT LED ]
+Anode (+)    -> D2   (Use 220Ω resistor)
+Cathode (-)  -> GND  *(Common Ground Rail)*
+
+===================================
+
+[MQ Sensor A0 Pin Voltage Divider] (Outputs up to 5V)
+         |
+         |
+        .-.
+        | |
+        | |  10kΩ Resistor
+        '-'
+         |
+         |
+         +------------------------> [ESP32 Data Pin] (Receives max 3.3V)
+         |                          (e.g., D34)
+         |
+        .-.
+        | |
+        | |  20kΩ Resistor
+        '-'
+         |
+         |
+       [GND] (Common Ground for ESP32 and Sensor)
+
 
 
